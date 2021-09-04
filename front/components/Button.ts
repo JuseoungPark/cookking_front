@@ -1,76 +1,63 @@
-import styled, { css } from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
+import {COLORS, FONTSIZES, FONTS} from '../constants'
 
-// injectGlobal`
-// 	body {
-// 		padding: 30px;
-// 	}
-// `
-interface StyledBtnProps {
-	// color
-	primary_1? : boolean;
-	primary_2? : boolean;
-	primary_3? : boolean;
 
-	// type
-	text? : boolean;
-
-	// round
-	round_0? : boolean;
-	round_1? : boolean;
-	round_2? : boolean;
-	round_3? : boolean;
-	round_4? : boolean;
-	round_5? : boolean;
-
-	// height
-	height_1? : boolean;
-	height_3? : boolean;
-	height_4? : boolean;
-
+const ButtonSize = {
+  large: 40,
+  medium: 32,
+  small: 22
 }
 
-//test
-export const Btn = styled.TouchableOpacity<StyledBtnProps>`
-align-items: center;
-	justify-content: center;
-	height: 32px;
-	border-radius: 8px;
-	background-color: #eeeeee;
+// 효율적이고 간편한 방법으로 계속 개선할 예정
+type ButtonPropsType = {
+    // color
+    backgroundColor?: keyof typeof COLORS
 
-	${props => props.primary_1 && css``}
-	${props => props.primary_2 && css` background-color: #49b792;	`}
-	${props => props.primary_3 && css && css`
-		background-color: #289a7e;
-	`}
+    // type
+    text?: boolean;
+    bottomFixed?: boolean;
 
-	${props => props.text && css` background-color: transparent; `}
+    // round : 기본 solid
+    round?: boolean;
 
-	${props => props.round_0 && css` border-radius: 0; `}
-	${props => props.round_1 && css` border-radius: 3px; `}
-	${props => props.round_3 && css` border-radius: 8px; `}
-	${props => props.round_5 && css` border-radius: 16px;	`}
+    // size : 기본 32 (medium)
+    heightSize?: keyof typeof ButtonSize
+}
 
-	${props => props.height_1 && css`
-		height: 22px;
-	`}
-	${props => props.height_3 && css`
-		height: 45px;
-	`}
-	${props => props.height_4 && css`
-		height: 60px;
-	`}
+interface ButtonContPropsType {
+    white?: boolean;
+    disabled?: boolean;
+}
+
+const Button = styled.TouchableOpacity<ButtonPropsType>`
+  flex: 1;
+  width: auto;
+  margin: 0 4px;
+  padding: 0 8px; 
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-radius: 4px;
+  background-color: ${COLORS.gray200};
+
+  ${({backgroundColor}) => backgroundColor && css`background-color: ${COLORS[backgroundColor]}`};
+
+  ${({heightSize}) => heightSize && css`height: ${ButtonSize[heightSize]}px`};
+
+  ${props => props.text && css` ${COLORS.transparent}`};
+  ${props => props.bottomFixed && css`
+    margin: 0 -16px;
+    height: 60px;
+    border-radius: 0;
+  `}
+  ${props => props.round && css`border-radius: 50px`};
 `
 
-export const BtnCont = styled.Text`
-	font-size: 14px;
-	font-weight: 500;
-	letter-spacing: -.05em;
-	color: ${props => (props.primary_3 ? "#ffffff" : "#515151")};
+export const ButtonText = styled.Text<ButtonContPropsType>`
+  ${FONTS.fontMedium};
+  font-size: ${FONTSIZES.body3}px;
+  color: ${props => (props.white ? `${COLORS.white}` : `${COLORS.gray700}`)};
 `
 
-// export const BtnCont = Btn.withComponent('Text')`
-// 	font-size: 14px;
-// 	font-weight: 500;
-// 	letter-spacing: -.05em;
-// 	color: ${props => (props.primary_3 ? "#ffffff" : "#515151")};
-// `
+
+export default Button;
