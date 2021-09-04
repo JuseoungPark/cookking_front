@@ -1,26 +1,45 @@
 import React, { useState } from 'react';
-import styled, {css} from 'styled-components/native';
-import appTheme, {COLORS, FONTSIZES, FONTS} from '../constants/theme';
+import styled, { css } from 'styled-components/native';
+import appTheme, { COLORS, FONTSIZES, FONTS } from '../constants/theme';
 
-function Input() {
+const Input = () => {
 
   const [text, setText] = useState('')
+  // const [isFocus, setIsFocus] = useState(false)
+  // const [isBlur, setIsBlur] = useState(false)
 
-	return (
+  // const focusHandler = (event: FocusEvent<StyledInput>) => {
+  //   setIsFocus(true);
+
+  //   console.log(event);
+  // }
+  // const blurHandler = (event: FocusEvent<StyledInput>) => {
+  //   setIsFocus(false);
+  //   setIsBlur(true);
+
+
+  //   console.log(event);
+  // }
+
+  return (
     <InputWrap>
       <StyledInput
-        value={ text }
+        value={text}
         onChangeText={(value) => setText(value)}
-        editable
+        // onFocus={ focusHandler }
+        // onBlur={ blurHandler }
         placeholder='검색어를 입력해 주세요.'
+        placeholderTextColor='${COLORS.gray400}'
       />
-      
+
       {/* 삭제 버튼 */}
-      <ButtonParent onPress={() => setText('')}>
-        <CloseButton
-          source={require('../assets/ico_clear_mid.png')}
-        />
-      </ButtonParent>
+      {text && (
+        <ButtonParent onPress={() => setText('')}>
+          <CloseButton
+            source={require('../assets/ico_clear_mid.png')}
+          />
+        </ButtonParent>
+      )}
 
       {/* 검색 버튼 */}
       <ButtonParent>
@@ -29,21 +48,16 @@ function Input() {
         />
       </ButtonParent>
     </InputWrap>
-	);
+  );
 };
 
 // TextInput Opt
 // ref / onSubmitEditing / returnKeyType / autoFocus /
 
-interface CheckedProps {
-	placeholder? : string;
-
+interface InputProps {
   // style
-  gray? : boolean;
+  gray?: boolean;
 };
-
-const Valid = true;
-type InputState = typeof Valid;
 
 const InputWrap = styled.View`
   position: relative;
@@ -51,15 +65,12 @@ const InputWrap = styled.View`
   justify-content: flex-end;
   align-items: center;
 `;
-const StyledInput = styled.TextInput<CheckedProps>`
+const StyledInput = styled.TextInput<InputProps>`
   position: absolute;
   width: 100%; height: 40px;
   padding: 0 88px 0 0;
   background-color: ${COLORS.white};
   border: 1px solid ${COLORS.gray200};
-  &::placeholder {
-    color: ${COLORS.gray400};
-  }
 `;
 const ButtonParent = styled.TouchableOpacity`
   flex: none;

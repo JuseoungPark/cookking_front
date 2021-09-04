@@ -17,8 +17,7 @@ function Home() {
 				<BtnCont>카운터로</BtnCont>
 			</Btn>
 
-			{/* <Card></Card> */}
-			<Input icon='search' ></Input>
+			<Input />
 		</Container>
 	)
 }
