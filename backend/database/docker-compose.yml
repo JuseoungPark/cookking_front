@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    container_name: "cookking_db"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=cookking
+      - POSTGRES_USER=cookking
+      - POSTGRES_PASSWORD=cookking!@#
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8
+    volumes:
+      - ./data:/var/lib/postgresql/data

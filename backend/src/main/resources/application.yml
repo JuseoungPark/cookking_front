@@ -1,0 +1,70 @@
+spring:
+  profiles:
+    group:
+      "local": "local,common"
+---
+spring:
+  profiles:
+    group:
+      "prod": "prod,common"
+---
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cookking
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+---
+spring:
+  config:
+    activate:
+      on-profile: "local"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cookking
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+---
+spring:
+  config:
+    activate:
+      on-profile: "common"
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      username: cookking
+      password: cookking!@#
+      maximum-pool-size: 5
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        format_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+  logging:
+    level:
+      org:
+        hibernate:
+          SQL: debug
