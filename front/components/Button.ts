@@ -29,6 +29,7 @@ interface StyledBtnProps {
 
 }
 
+//test
 export const Btn = styled.TouchableOpacity<StyledBtnProps>`
 align-items: center;
 	justify-content: center;
