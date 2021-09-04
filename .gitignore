@@ -1,0 +1,62 @@
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### IntelliJ ###
+.idea
+./**/.idea
+
+### Database ###
+backend/database/data
+
+### Node ###
+front/node_modules/
+front/.expo/
+front/npm-debug.*
+front/*.jks
+front/*.p8
+front/*.p12
+front/*.key
+front/*.mobileprovision
+front/*.orig.*
+front/web-build/
+
+.DS_Store
+front/.DB_Store
+./**/.DB_Store
+
+
