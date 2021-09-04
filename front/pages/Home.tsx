@@ -1,12 +1,11 @@
 import React from 'react'
 import Container from '../components/Container'
 import { Btn, BtnCont } from '../components/Button'
-// import { Card } from '../components/Card'
 import { Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-// import Input from '../components/TextInput'
 import Input from '../components/Input'
+import Card from '../components/Card'
 
 function Home() {
 	const navigation = useNavigation()
@@ -18,6 +17,10 @@ function Home() {
 			</Btn>
 
 			<Input />
+
+			<Text />
+
+			<Card></Card>
 		</Container>
 	)
 }

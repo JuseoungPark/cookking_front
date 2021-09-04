@@ -1,33 +1,142 @@
-import React from 'react'
-import styled from 'styled-components/native';
+import React from 'react';
+import { FlatList } from 'react-native-gesture-handler';
 
-function Card() {
+import styled from 'styled-components/native';
+import { FONTS } from '../constants/theme';
+
+const DATA = [
+  {
+    id: 1,
+    UserImage: '../assets/img_temp.png',
+    name: '이경량',
+    time: '30분 초과',
+    title: '몸에 좋은 나물 반찬',
+    sub_title: '이런식으로 설명이 들어가면 좋을 것 같습니다.',
+  },
+  {
+    id: 2,
+    UserImage: '../assets/img_temp.png',
+    name: '박주성',
+    time: '42분',
+    title: '메롱',
+    sub_title: '우웽',
+  },
+]
+
+const renderItem = ({ item }) => {
   return (
     <CardWrap>
-      <CardImage>안녕..</CardImage>
+      <CardHeader>
+        <UserWrap>
+          <UserImage source={require('../assets/temp.png')} />
+          <User>{item.name}</User>
+        </UserWrap>
+        <ButtonParent>
+          <ShareButton source={require('../assets/ico_share.png')}></ShareButton>
+        </ButtonParent>
+      </CardHeader>
+
+      <CardContent>
+        <CookingTime>{item.time}</CookingTime>
+        <CardDescriptionWrap>
+          <CardTitle>{item.title}</CardTitle>
+          <CardSubTitle>{item.sub_title}</CardSubTitle>
+        </CardDescriptionWrap>
+      </CardContent>
+
+      <CardFooter>
+        <ButtonParent>
+          <BookmarkButton source={require('../assets/Ico_bookmark.png')}></BookmarkButton>
+        </ButtonParent>
+      </CardFooter>
     </CardWrap>
+  );
+};
+
+const Card = () => {
+
+  // const [data, setData] = useState([]);
+
+  return (
+    <FlatList
+      data={DATA}
+      renderItem={renderItem}
+      keyExtractor={(item) => String(item.id)}
+    />
   )
 }
 
 const CardWrap = styled.View`
+  flex: none;
+`
+const CardHeader = styled.View`
+  flex: 1;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+`
+const CardContent = styled.View`
+  flex: 1;
+  min-height: 30vh;
+  padding: 20px 16px;
+  background-color: #cecece; /* 임의값 */
+`
+const UserWrap = styled.View`
+  flex-flow: row wrap;
+  align-items: center;
+`
+const UserImage = styled.Image`
+  width: 40px; height: 40px;
+  margin-right: 8px;
+  border-radius: 9999px;
+  background-color: #cecece; /* 임의값 */
+`
+const User = styled.Text`
+`
+const ButtonParent = styled.TouchableOpacity`
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: 32px; height: 32px;
+  font-size: 0;
+`;
+const ShareButton = styled.Image`
+  width: 15px; height: 16px;
+`;
+const BookmarkButton = styled.Image`
+  width: 18px; height: 22px;
+`;
+
+const CookingTime = styled.Text`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  padding: 8px 12px;
+  border-radius: 16px;
+  background-position: 12px 50%;
+  background-size: 16px;
+  background-image: url('../assets/ico_clock.png');
+  background-repeat: no-repaet;
+  background-color: rgba(255, 255, 255, .75);
+`
+const CardDescriptionWrap = styled.View`
+  flex: none;
+  margin-top: auto;
+`
+const CardTitle = styled.Text`
+  font-size: ${FONTS.largestTitle};
+  font-weight: ${FONTS.fontBold};
+`
+const CardSubTitle = styled.Text`
+  font-size: ${FONTS.midTitle};
 `
 
-const CardImage = styled.View`
-  height: 281px;
-  background-color: #f5f5f5;
+const CardFooter = styled.Text`
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
 `
-
-// const TextInput: React.FC = () => {
-
-//   const [title, setTitle]: [string | null, any] = useState(null);
-
-//   const handleInput: React.ChangeEventHandler = (e) => {
-//     setTitle(e.target.value);
-//   };
-
-//   return (
-//     <TextInput onChange={ handleInput } >{ title }</TextInput>
-//   )
-// }
 
 export default Card;

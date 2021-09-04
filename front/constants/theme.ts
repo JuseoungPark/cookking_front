@@ -65,7 +65,7 @@ export const FONTSIZES = {
 // 너무 헷갈리면 그냥 사용하지 않기로
 export const FONTS = {
   // 폰트 굵기
-  fontBold: { fontFamily: 'NotoSansKR-Bold', letterSpacing: '-0.05em'},
+  fontBold: { fontFamily: 'NotoSansKR-Bold', letterSpacing: '-0.05em' },
   fontMedium: { fontFamily: 'NotoSansKR-Medium', letterSpacing: '-0.05em' },
   fontLegular: { fontFamily: 'NotoSansKR-Regular', letterSpacing: '-0.05em' },
   fontLight: { fontFamily: 'NotoSansKR-Light', letterSpacing: '-0.05em' },
