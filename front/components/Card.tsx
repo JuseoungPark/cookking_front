@@ -1,8 +1,9 @@
 import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
+// import Lineargradient from 'react-native-linear-gradient';
 
 import styled from 'styled-components/native';
-import { FONTS } from '../constants/theme';
+import { COLORS, FONTS } from '../constants/theme';
 
 const DATA = [
   {
@@ -37,11 +38,24 @@ const renderItem = ({ item }) => {
       </CardHeader>
 
       <CardContent>
-        <CookingTime>{item.time}</CookingTime>
-        <CardDescriptionWrap>
-          <CardTitle>{item.title}</CardTitle>
-          <CardSubTitle>{item.sub_title}</CardSubTitle>
-        </CardDescriptionWrap>
+        <CardImageBackground
+          source={require('../assets/img_card_temp.png')}
+          resizeMode='cover'
+        >
+          <CookingTime>{item.time}</CookingTime>
+          <CardDescriptionWrap>
+            <CardTitle>{item.title}</CardTitle>
+            <CardSubTitle>{item.sub_title}</CardSubTitle>
+          </CardDescriptionWrap>
+          {/* <Lineargradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            color={[
+              COLORS.white,
+              COLORS.black
+            ]}
+          ></Lineargradient> */}
+        </CardImageBackground>
       </CardContent>
 
       <CardFooter>
@@ -76,12 +90,6 @@ const CardHeader = styled.View`
   justify-content: space-between;
   min-height: 64px;
 `
-const CardContent = styled.View`
-  flex: 1;
-  min-height: 30vh;
-  padding: 20px 16px;
-  background-color: #cecece; /* 임의값 */
-`
 const UserWrap = styled.View`
   flex-flow: row wrap;
   align-items: center;
@@ -108,6 +116,16 @@ const BookmarkButton = styled.Image`
   width: 18px; height: 22px;
 `;
 
+const CardContent = styled.View`
+  flex: 1;
+  min-height: 30vh;
+  // background-color: #cecece; // 임의값
+  `
+const CardImageBackground = styled.ImageBackground`
+  flex: 1;
+  justify-content: center;
+  padding: 20px 16px;
+`
 const CookingTime = styled.Text`
   display: flex;
   flex-flow: row wrap;
@@ -127,9 +145,11 @@ const CardDescriptionWrap = styled.View`
 const CardTitle = styled.Text`
   font-size: ${FONTS.largestTitle};
   font-weight: ${FONTS.fontBold};
+  color: ${COLORS.white};
 `
 const CardSubTitle = styled.Text`
   font-size: ${FONTS.midTitle};
+  color: ${COLORS.white};
 `
 
 const CardFooter = styled.Text`
