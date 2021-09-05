@@ -1,16 +1,15 @@
 import React, {useState} from 'react'
 import Container from '../components/Container'
+import { Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import Card from '../components/Card'
-
-function Home() {
+function User() {
 	const navigation = useNavigation()
 	return (
 		<Container>
-			<Card />
+			<Text>user</Text>
 		</Container>
 	)
 }
 
-export default Home
+export default User

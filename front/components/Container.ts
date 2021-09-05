@@ -1,8 +1,17 @@
-import styled from 'styled-components/native'
+import styled, { css } from 'styled-components/native';
+import { COLORS, FONTS, FONTSIZES } from '../constants/theme';
 
-const Container = styled.View`
+interface StyledFlag {
+	home? : boolean,
+}
+
+const Container = styled.View<StyledFlag>`
 	flex: 1;
-	padding: 0 16px;
+	padding-bottom: 60px;
+	background-color: ${COLORS.white};
+	${props =>
+		props.home && css`
+	`}
 `
 
 export default Container

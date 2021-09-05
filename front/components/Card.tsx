@@ -93,6 +93,7 @@ const CardHeader = styled.View`
   align-items: center;
   justify-content: space-between;
   min-height: 64px;
+  padding: 0 16px;
 `
 const UserWrap = styled.View`
   flex-flow: row wrap;
@@ -105,6 +106,8 @@ const UserImage = styled.Image`
   background-color: #cecece; /* 임의값 */
 `
 const User = styled.Text`
+  ${FONTS.fontLegular};
+  font-size: ${FONTSIZES.body3}px;
 `
 const ButtonParent = styled.TouchableOpacity`
   flex: none;
@@ -134,23 +137,26 @@ const CookingTime = styled.Text`
   width: fit-content;
   margin-left: auto;
   padding: 8px 12px;
-  border-radius: 16px;
+  border-radius: 24px;
   background-position: 12px 50%;
   background-size: 16px 16px;
   background-image: url('../assets/ico_clock.png');
   background-repeat: no-repaet;
   background-color: rgba(255, 255, 255, .75);
+  ${FONTS.fontLegular};
+  font-size: ${FONTSIZES.body5}px;
 `
 const CardDescriptionWrap = styled.View`
   flex: none;
   margin-top: auto;
 `
 const CardTitle = styled.Text`
+  ${FONTS.fontBold};
   font-size: ${FONTSIZES.largestTitle}px;
-  font-weight: ${FONTS.fontBold};
   color: ${COLORS.white};
 `
 const CardSubTitle = styled.Text`
+  ${FONTS.fontLegular};
   font-size: ${FONTSIZES.midTitle}px;
   color: ${COLORS.white};
 `
@@ -162,6 +168,7 @@ const CardFooter = styled.Text`
   justify-content: space-between;
   align-items: center;
   min-height: 56px;
+  padding: 0 16px; 
 `
 
 const FlagWrap = styled.View`
@@ -182,6 +189,7 @@ const FlagItem = styled.Text<StyledFlag>`
   border-style: solid;
   border-color: ${COLORS.gray200};
   border-radius: 20px;
+  ${FONTS.fontLegular};
   font-size: ${FONTSIZES.body3}px;
   color: ${COLORS.gray700};
   background-color: ${COLORS.white};
@@ -192,6 +200,7 @@ const FlagItem = styled.Text<StyledFlag>`
       border-color: #ba7b3d;
       color: #ba7b3d;
       background-color: rgba(186, 123, 61, .06);
+      ${FONTS.fontMedium};
     `}
 `
 

@@ -33,7 +33,6 @@ function Count() {
 
 	return (
 		<Container>
-			<Text>{params.title}</Text>
 			<Container>
 				<Text>{count}</Text>
 				<Row>
@@ -48,7 +47,7 @@ function Count() {
 			</Container>
 			<ButtonWrap>
 				<Button
-					BackgroundColor="primary700" 
+					backgroundColor="primary700" 
 					bottomFixed
 					onPress={() => navigation.goBack()}
 				>

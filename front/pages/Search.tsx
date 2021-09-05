@@ -5,6 +5,7 @@ import ButtonWrap from '../components/ButtonWrap'
 import Icons from '../components/Icons'
 import { icons } from '../constants'
 import Chips from '../components/SelectChips'
+import Input from '../components/Input'
 import { Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Flag from '../components/Flag'
@@ -26,6 +27,7 @@ function Search() {
 	return (
 		<Container>
 			<Text>Search</Text>
+			<Input/>
 			<ButtonWrap>
 				<Button
 					onPress={() => navigation.navigate('Count', { title: '서치에서 눌렀다 임마!' })}
