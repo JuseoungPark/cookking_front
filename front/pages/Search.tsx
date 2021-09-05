@@ -7,6 +7,7 @@ import { icons } from '../constants'
 import Chips from '../components/SelectChips'
 import { Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import Flag from '../components/Flag'
 
 function Search() {
 	const navigation = useNavigation()
@@ -39,6 +40,10 @@ function Search() {
 			<ButtonWrap>
 				<Chips states={states} setStates={setStates}/>
 			</ButtonWrap>
+
+			<Text>Flag</Text>
+
+			<Flag />
 		</Container>
 	)
 }
