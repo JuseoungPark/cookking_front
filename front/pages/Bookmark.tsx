@@ -11,8 +11,8 @@ const Tab = createMaterialTopTabNavigator();
 function Bookmark() {
 
 	return (
-		<Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
-			<Tab.Screen name="레시피" component={Recipe} />
+		<Tab.Navigator swipeEnabled={false} tabBar={(props) => <TabBar {...props} />}>
+			<Tab.Screen name="레시피" component={Recipe}/>
 			<Tab.Screen name="레시피북" component={RecipeBook} />
 		</Tab.Navigator>
 	)
