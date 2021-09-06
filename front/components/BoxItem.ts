@@ -13,7 +13,7 @@ export const BoxItem = styled.View<BoxItemType>`
   ${props =>
     props.space &&
     css`
-      padding: 16px;
+      padding: 0 16px;
     `}
 `
 
