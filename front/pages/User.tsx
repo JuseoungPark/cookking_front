@@ -10,7 +10,10 @@ function User() {
 	const navigation = useNavigation()
 	return (
 		<Container>
-			<Box>
+			<Box row>
+				<BoxItem space>
+					Component를 넣으면 됩니다.
+				</BoxItem>
 				<BoxItem space>
 					Component를 넣으면 됩니다.
 				</BoxItem>

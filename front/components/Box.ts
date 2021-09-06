@@ -1,9 +1,17 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 // import { COLORS, FONTSIZES } from '../constants/theme';
 
-export const Box = styled.View`
+interface BoxType {
+  row? : boolean,
+}
+
+export const Box = styled.View<BoxType>`
   flex: 1;
-  background-color: #bebebe;
+  ${props =>
+    props.row &&
+    css`
+      flex-direction: row;
+    `}
 `
 
 export default Box;
