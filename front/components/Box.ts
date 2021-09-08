@@ -6,7 +6,7 @@ interface BoxType {
 }
 
 export const Box = styled.View<BoxType>`
-  flex: none;
+  flex: 1;
   ${props =>
     props.row &&
     css`

@@ -6,7 +6,7 @@ interface BoxItemType {
 }
 
 export const BoxItem = styled.View<BoxItemType>`
-  flex: none;
+  // flex: 1;
   // border-width: 1px;
   // border-style: solid;
   // border-color: #bebebe;
