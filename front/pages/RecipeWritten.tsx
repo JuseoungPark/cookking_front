@@ -3,6 +3,7 @@ import { FlatList } from 'react-native'
 
 import styled, { css } from 'styled-components/native';
 // import { COLORS, FONTS, FONTSIZES } from '../constants/theme';
+// import { View, Text } from 'react-native'
 
 const DATA = [
 	{
@@ -51,10 +52,10 @@ const formatData = (DATA, numColumns) => {
 	const numberOfFullRows = Math.floor(DATA.length / numColumns);
 
 	let numberOfElmentsLastRow = DATA.length - (numberOfFullRows * numColumns);
-	while (numberOfElmentsLastRow !== numColumns) {
-		DATA.push({ key: `blank-$(numberOfElmentsLastRow)`, empty: true });
-		numberOfElmentsLastRow = numberOfElmentsLastRow + 1;
-	}
+	// while (numberOfElmentsLastRow !== numColumns) {
+	// 	DATA.push({ key: `blank-$(numberOfElmentsLastRow)`, empty: true });
+	// 	numberOfElmentsLastRow = numberOfElmentsLastRow + 1;
+	// }
 
 	return DATA;
 }
@@ -73,12 +74,13 @@ const RecipeWritten = () => {
 	const numColumns = 3;
 
 	return (
-		<FlatList
-			style={{
-				flex: 1,
-				flexDirection: 'row',
-				flexWrap: 'wrap',
-			}}
+		// 다시 FlatList로 돌려도 됨. 그럼 밑에 주석 풀어서 스타일 줘야 함.
+		<GridLayout
+			// style={{
+			// 	flex: 1,
+			// 	flexDirection: 'row',
+			// 	flexWrap: 'wrap',
+			// }}
 			data={formatData(DATA, numColumns)}
 			renderItem={renderItem}
 			keyExtractor={(item) => String(item.id)}
