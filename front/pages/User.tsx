@@ -1,5 +1,5 @@
 import React from 'react'
-import { FONTSIZES } from '../constants/theme';
+import { FONTS, FONTSIZES, COLORS } from '../constants/theme';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native'
 
@@ -10,10 +10,18 @@ import BoxItem from '../components/BoxItem'
 import ButtonWrap from '../components/ButtonWrap'
 import Button, { ButtonText } from '../components/Button'
 
-import { View, Text } from 'react-native'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import TabBar from '../components/Tabbar'
+import RecipeWritten from './RecipeWritten'
+import RecipeBook from './RecipeBook'
+
+import { Text } from 'react-native'
+
+const Tab = createMaterialTopTabNavigator();
 
 function User() {
 	const navigation = useNavigation()
+
 	return (
 		<Container>
 			<Box>
@@ -44,17 +52,20 @@ function User() {
 						</Button>
 					</ButtonWrap>
 				</BoxItem>
-				{/* <BoxItem>
-					.. 탭 ..
-				</BoxItem> */}
+
+				<Tab.Navigator swipeEnabled={false} tabBar={(props) => <TabBar {...props} />}>
+					<Tab.Screen name="작성한 레시피" component={RecipeWritten}/>
+					<Tab.Screen name="좋아요한 레시피" component={RecipeBook} />
+				</Tab.Navigator>
 			</Box>
 		</Container>
 	)
 }
 
 const Profile = styled.View`
-	flex: 1;
+	flex: none;
 	align-items: center;
+	padding: 24px 0;
 `
 const Profile_Picture = styled.Image`
 	width: 72px; height: 72px;
@@ -75,7 +86,9 @@ const Profile_User_Info_Item = styled.View`
 	align-items: center;
 `
 const ProfileUserData = styled.Text`
+	${FONTS.fontBold};
 	font-size: ${FONTSIZES.mainTitle};
+	color: ${COLORS.black};
 `
 
 export default User
