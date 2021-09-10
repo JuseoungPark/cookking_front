@@ -6,9 +6,6 @@ const bookmarkLine = require("../assets/icons/ico_bookmark--trans.png")
 const bookmarkNoLine = require("../assets/icons/ico_bookmark--no-line.png")
 const checkedBookmark = require("../assets/icons/ico_bookmark--cheked.png")
 
-
-
-
 export default {
     home,
     search,
