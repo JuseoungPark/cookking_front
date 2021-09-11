@@ -201,7 +201,8 @@ const data2 = [
 	}
 ]
 
-const Item = ({ title, userName, userPic, mainImage, bookmarkCount }) => (
+const Item = ({ title, userName, userPic, mainImage, bookmarkCount }:
+	{title: string, userName: string, userPic: any, mainImage: any, bookmarkCount: number}) => (
 	<HorizonCard
 	>
 		<HorizonCardImage source={mainImage}/>
@@ -225,7 +226,7 @@ const Item = ({ title, userName, userPic, mainImage, bookmarkCount }) => (
 	</HorizonCard>
 );
 
-const RoundCardItem = ({ title, mainImage, tag }) => (
+const RoundCardItem = ({ title, mainImage, tag }: {title: string, mainImage: any, tag: Array<any>}) => (
 	<RoundCard
 	>
 		<RoundCardImage source={mainImage}/>
@@ -239,7 +240,7 @@ const RoundCardItem = ({ title, mainImage, tag }) => (
 );
 
 function Recipe() {
-	const renderItem = ({ item }) => (
+	const renderItem = ({ item }: {item: any}) => (
 		<Item 
 			title={item.title}
 			mainImage={item.mainImage}
@@ -249,7 +250,7 @@ function Recipe() {
 		/>
 	);
 
-	const renderRoundCardItem = ({ item }) => (
+	const renderRoundCardItem = ({ item }: {item: any}) => (
 		<RoundCardItem 
 			title={item.title}
 			mainImage={item.mainImage}
