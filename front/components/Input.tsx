@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components/native';
+import { Text } from 'react-native';
 import appTheme, { COLORS, FONTSIZES, FONTS } from '../constants/theme';
 
 const Input = () => {
@@ -33,7 +34,7 @@ const Input = () => {
       />
 
       {/* 삭제 버튼 */}
-      {text && (
+      {<Text>{text}</Text> && (
         <ButtonParent onPress={() => setText('')}>
           <CloseButton
             source={require('../assets/ico_clear_mid.png')}

@@ -5,7 +5,7 @@ import { COLORS, FONTS, FONTSIZES } from '../../constants/theme';
 export const GrayFlagWrap = styled.View`
 	flex-flow: row wrap;
 `
-export const GrayFlag = styled.View`
+export const GrayFlag = styled.Text`
 	margin-right: 8px;
 	padding: 2px 8px;
 	background-color: ${COLORS.gray200};

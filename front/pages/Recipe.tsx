@@ -72,46 +72,37 @@ const RoundCardData = [
 		id: 1,
 		title: '건강하고 간단한 브런치',
 		mainImage: require('../assets/temp/img_card_temp2.png'),
-		tag: [
-			'조리시간 30분 미만','초간단'
-		]
+		tag: '조리시간 30분 미만'
 	},
 	{
 		id: 2,
 		title: '건강하고 간단한 브런치',
 		mainImage: require('../assets/temp/img_card_temp2.png'),
-		tag: [
-			'조리시간 30분 미만','초간단'
-		]
+		tag: '조리시간 30분 미만'
 	},
 	{
 		id: 3,
 		title: '건강하고 간단한 브런치 건강하고 간단한 브런치',
 		mainImage: require('../assets/temp/img_card_temp2.png'),
-		tag: [
-			'조리시간 30분 미만','초간단'
-		]
-	},
-	{
-		id: 3,
-		title: '건강하고 간단한 브런치 건강하고 간단한 브런치',
-		mainImage: require('../assets/temp/img_card_temp2.png'),
-		tag: [
-			'조리시간 30분 미만','초간단'
-		]
+		tag: '조리시간 30분 미만'
 	},
 	{
 		id: 4,
 		title: '건강하고 간단한 브런치 건강하고 간단한 브런치',
 		mainImage: require('../assets/temp/img_card_temp2.png'),
-		tag: [
-			'조리시간 30분 미만','초간단'
-		]
+		tag: '조리시간 30분 미만'
+	},
+	{
+		id: 5,
+		title: '건강하고 간단한 브런치 건강하고 간단한 브런치',
+		mainImage: require('../assets/temp/img_card_temp2.png'),
+		tag: '조리시간 30분 미만'
 	}
 ]
 
 const HorizonCard = horizonCardData.map((item) => 
-	<HorizonCardList 
+	<HorizonCardList
+		key={item.id}
 		title={item.title}
 		mainImage={item.mainImage}
 		userPic={item.userPic}
@@ -121,7 +112,8 @@ const HorizonCard = horizonCardData.map((item) =>
 );
 
 const RoundCard = RoundCardData.map((item) => 
-	<RoundCardList 
+	<RoundCardList
+		key={item.id}
 		title={item.title}
 		mainImage={item.mainImage}
 		tag={item.tag}

@@ -2,9 +2,9 @@ import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 
 import styled, { css } from 'styled-components/native';
-import { COLORS, FONTSIZES } from '../constants/theme';
+import { COLORS, FONTSIZES } from '../../constants/theme';
 
-const Flag = () => {
+const LineFlag = () => {
 
   // const [data, setData] = useState([]);
   const DATA = [
@@ -70,4 +70,4 @@ const FlagItem = styled.Text<StyledFlag>`
     `}
 `
 
-export default Flag;
+export default LineFlag;
