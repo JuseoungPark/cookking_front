@@ -1,49 +1,49 @@
 import React from 'react'
-import { FlatList } from 'react-native'
+import { Dimensions, FlatList } from 'react-native'
 
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 // import { COLORS, FONTS, FONTSIZES } from '../constants/theme';
 
 const DATA = [
 	{
 		id: '1',
-		mainImage: '../assets/img_card_temp.png'
+		mainImage: require('../assets/img_card_temp.png')
 	},
 	{
 		id: '2',
-		mainImage: '../assets/img_card_temp.png'
+		mainImage: require('../assets/img_card_temp.png')
 	},
 	{
 		id: '3',
-		mainImage: '../assets/img_card_temp.png'
+		mainImage: require('../assets/img_card_temp.png')
 	},
 	{
 		id: '4',
-		mainImage: '../assets/img_card_temp.png'
+		mainImage: require('../assets/img_card_temp.png')
 	},
 	{
 		id: '5',
-		mainImage: '../assets/img_card_temp.png'
+		mainImage: require('../assets/img_card_temp.png')
 	},
 	{
 		id: '6',
-		mainImage: '../assets/img_card_temp.png'
+		mainImage: require('../assets/img_card_temp.png')
 	},
 	{
 		id: '7',
-		mainImage: '../assets/img_card_temp.png'
+		mainImage: require('../assets/img_card_temp.png')
 	},
 	{
 		id: '8',
-		mainImage: '../assets/img_card_temp.png'
+		mainImage: require('../assets/img_card_temp.png')
 	},
 	{
 		id: '9',
-		mainImage: '../assets/img_card_temp.png'
+		mainImage: require('../assets/img_card_temp.png')
 	},
 	{
 		id: '10',
-		mainImage: '../assets/img_card_temp.png'
+		mainImage: require('../assets/img_card_temp.png')
 	}
 ]
 
@@ -59,13 +59,25 @@ const formatData = (DATA, numColumns) => {
 	return DATA;
 }
 
+const { width } = Dimensions.get('window')
+
 const RecipeWritten = () => {
 
-	const renderItem = ({ item }) => (
-		<GridItem>
+	const renderItem = ({ item, index }) => (
+		<GridItem
+			key={index}
+			style={[
+				{ width: (width) / 3 },
+				{ height: (width) / 3 },
+				index % 3 !== 0 ? { paddingLeft: 4 } : { paddingLeft: 0 }
+			]}
+		>
 			<GridImage
-				source={require('../assets/img_card_temp.png')}
-				resizeMode='cover'
+				source={item.mainImage}
+				style={{
+					width: undefined,
+					height: undefined,
+				}}
 			/>
 		</GridItem>
 	);
@@ -92,16 +104,13 @@ const GridLayout = styled.FlatList`
 	flex-flow: row wrap;
 `
 
-const GridItem = styled.View`
+const GridItem = styled.TouchableOpacity`
 	flex: 1;
-	align-items: center;
-	justify-content: center;
-	margin: 6px;
-	background-color: #bebebe;
+	margin-bottom: 4px;
+	background-color: #cecece;
 `
 const GridImage = styled.Image`
-	width: 112;
-	height: 112;
+	flex: 1;
 `
 
 export default RecipeWritten;
