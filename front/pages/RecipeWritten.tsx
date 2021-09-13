@@ -69,7 +69,7 @@ const RecipeWritten = () => {
 			style={[
 				{ width: (width) / 3 },
 				{ height: (width) / 3 },
-				index % 3 !== 0 ? { paddingLeft: 4 } : { paddingLeft: 0 }
+				index % 3 !== 0 ? { marginLeft: 4 } : { marginLeft: 0 }
 			]}
 		>
 			<GridImage
