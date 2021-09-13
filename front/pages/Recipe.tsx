@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, ScrollView, Dimensions, Text } from 'react-native'
 import styled, {css} from 'styled-components/native';
-import { COLORS, FONTS, FONTSIZES } from '../constants/theme';
-import HorizonCardList from '../components/card/HorizontalCard'
-import RoundCardList from '../components/card/RoundCard'
+import { COLORS, FONTS, FONTSIZES } from '@constants/theme';
+import HorizonCardList from '@components/card/HorizontalCard'
+import RoundCardList from '@components/card/RoundCard'
 
 const HeadTitle = styled.Text`
 	margin-bottom: 16px;
@@ -135,6 +135,7 @@ function Recipe() {
 					paddingTop: 24,
 					paddingBottom: 40
 				}}
+				showsVerticalScrollIndicator={false}
 			>
 				<View
 					style={{ 

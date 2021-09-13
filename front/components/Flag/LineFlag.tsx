@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 
 import styled, { css } from 'styled-components/native';
-import { COLORS, FONTSIZES } from '../../constants/theme';
+import { COLORS, FONTSIZES } from '@constants/theme';
 
 const LineFlag = () => {
 

@@ -3,7 +3,7 @@ import { FlatList } from 'react-native-gesture-handler';
 // import Lineargradient from 'react-native-linear-gradient';
 
 import styled, { css } from 'styled-components/native';
-import { COLORS, FONTS, FONTSIZES } from '../constants/theme';
+import { COLORS, FONTS, FONTSIZES } from '@constants/theme';
 
 const DATA = [
   {

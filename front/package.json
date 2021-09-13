@@ -17,6 +17,7 @@
     "@types/recoil": "^0.0.9",
     "@types/styled-components-react-native": "^5.1.1",
     "axios": "^0.21.1",
+    "babel-plugin-module-resolver": "4.1.0",
     "expo": "~42.0.1",
     "expo-status-bar": "~1.0.4",
     "lodash": "^4.17.21",

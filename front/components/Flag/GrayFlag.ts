@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native';
-import { COLORS, FONTS, FONTSIZES } from '../../constants/theme';
+import { COLORS, FONTS, FONTSIZES } from '@constants/theme';
 
 
 export const GrayFlagWrap = styled.View`
