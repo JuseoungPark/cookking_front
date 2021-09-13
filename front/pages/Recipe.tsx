@@ -1,116 +1,22 @@
-import React, {useState} from 'react'
-import Container from '../components/Container'
-import Box from '../components/Box'
-import BoxItem from '../components/BoxItem'
-import { Text, FlatList, SectionList, SafeAreaView, Image, View } from 'react-native'
+import React from 'react'
+import { View, ScrollView, Dimensions, Text } from 'react-native'
 import styled, {css} from 'styled-components/native';
 import { COLORS, FONTS, FONTSIZES } from '../constants/theme';
-import { icons } from '../constants';
-import { ScrollView } from 'react-native-gesture-handler'
+import HorizonCardList from '../components/card/HorizontalCard'
+import RoundCardList from '../components/card/RoundCard'
 
-//기본
-const GrayFlagWrap = styled.View`
-	flex-flow: row wrap;
-`
-const GrayFlag = styled.View`
-	margin-right: 8px;
-	padding: 2px 8px;
-	background-color: ${COLORS.gray200};
-	border-radius: 20px;
-	${FONTS.fontLegular};
-	font-size: ${FONTSIZES.body5}px;
-	color: ${COLORS.gray700};
-`
-
-// 간단한 카드형 (북마크 없음, 유저정보 없음)
-const RoundCard = styled.View`
-	width: calc(50% - 4px);
+const HeadTitle = styled.Text`
+	margin-bottom: 16px;
+	${FONTS.mainTitle};
 `
 
 const RoundCardWrap = styled.View`
 	flex-flow: row wrap;
 	justify-content: space-between;
 `
-const RoundCardImage = styled.Image`
-	width: 100%; 
-	//height: 150px;
-	height: 35.0467vw;
-	border-radius: 4px;
-`
-const RoundCardTitle = styled.Text`
-	max-width: 230px;
-	margin-top: 8px;
-	${FONTS.fontMedium};
-	font-size: ${FONTSIZES.body2}px;
-	color: ${COLORS.black};
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-`
-
-// 가로스크롤 카드
-const HorizonCard = styled.View`
-	display: inline-flex;
-	flex: none;
-	margin-right: 16px;
-`
-const HorizonCardImage = styled.Image`
-	width: 230px; height: 150px;
-	border-radius: 4px;
-`
-const HorizonCardTitle = styled.Text`
-	max-width: 230px;
-	margin-top: 8px;
-	${FONTS.fontMedium};
-	font-size: ${FONTSIZES.body2}px;
-	color: ${COLORS.black};
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-`
-const HorizonCardCont = styled.View`
-	flex-direction: row;
-	justify-content: space-between;
-`
-const HorizonCardUserInfo = styled.View`
-	flex-direction: row;
-	align-items: center;
-	margin-top: 4px;
-`
-const HorizonCardUserPic = styled.Image`
-	width: 24px; height: 24px;
-	margin-right: 6px;
-	border-radius: 50%;
-`
-const HorizonCardUserName = styled.Text`
-	${FONTS.fontLegular};
-	font-size: ${FONTSIZES.body4}px;
-	color: ${COLORS.gray700};
-`
-
-const HorizonCardBookmarkWrap = styled.View`
-	flex: none;
-	flex-direction: row;
-	align-items: center;
-`
-const HorizonCardButtonParent = styled.TouchableOpacity`
-	flex: none;
-	justify-content: center;
-	align-items: center;
-	width: 24px; height: 24px;
-	font-size: 0;
-`;
-const BookmarkIcon = styled.Image`
-	width: 16px; height: 16px;
-`;
-const HorizonCardBookmarkCount = styled.Text`
-	${FONTS.fontLegular};
-	font-size: ${FONTSIZES.body5}px;
-	color: ${COLORS.gray700};
-`
 
 // mockData
-const data = [
+const horizonCardData = [
 	{
 		id: 1,
 		title: '건강하고 간단한 브런치',
@@ -161,130 +67,108 @@ const data = [
 	}
 ]
 
-const data2 = [
+const RoundCardData = [
 	{
-		title: '북마크한 레시피',
-		data: [
-			{
-				id: 1,
-				title: '건강하고 간단한 브런치',
-				mainImage: require('../assets/temp/img_card_temp2.png'),
-				tag: [
-					'조리시간 30분 미만','초간단'
-				]
-			},
-			{
-				id: 2,
-				title: '건강하고 간단한 브런치',
-				mainImage: require('../assets/temp/img_card_temp2.png'),
-				tag: [
-					'조리시간 30분 미만','초간단'
-				]
-			},
-			{
-				id: 3,
-				title: '건강하고 간단한 브런치 건강하고 간단한 브런치',
-				mainImage: require('../assets/temp/img_card_temp2.png'),
-				tag: [
-					'조리시간 30분 미만','초간단'
-				]
-			},
-			{
-				id: 3,
-				title: '건강하고 간단한 브런치 건강하고 간단한 브런치',
-				mainImage: require('../assets/temp/img_card_temp2.png'),
-				tag: [
-					'조리시간 30분 미만','초간단'
-				]
-			}
-		]
+		id: 1,
+		title: '건강하고 간단한 브런치',
+		mainImage: require('../assets/temp/img_card_temp2.png'),
+		tag: '조리시간 30분 미만'
+	},
+	{
+		id: 2,
+		title: '건강하고 간단한 브런치',
+		mainImage: require('../assets/temp/img_card_temp2.png'),
+		tag: '조리시간 30분 미만'
+	},
+	{
+		id: 3,
+		title: '건강하고 간단한 브런치 건강하고 간단한 브런치',
+		mainImage: require('../assets/temp/img_card_temp2.png'),
+		tag: '조리시간 30분 미만'
+	},
+	{
+		id: 4,
+		title: '건강하고 간단한 브런치 건강하고 간단한 브런치',
+		mainImage: require('../assets/temp/img_card_temp2.png'),
+		tag: '조리시간 30분 미만'
+	},
+	{
+		id: 5,
+		title: '건강하고 간단한 브런치 건강하고 간단한 브런치',
+		mainImage: require('../assets/temp/img_card_temp2.png'),
+		tag: '조리시간 30분 미만'
 	}
 ]
 
-const Item = ({ title, userName, userPic, mainImage, bookmarkCount }:
-	{title: string, userName: string, userPic: any, mainImage: any, bookmarkCount: number}) => (
-	<HorizonCard
-	>
-		<HorizonCardImage source={mainImage}/>
-		{/* 레시피 제목 */}
-		<HorizonCardTitle>{title}</HorizonCardTitle>
-		{/* 하단 정보 */}
-		<HorizonCardCont>
-			{/* 유저 정보 */}
-			<HorizonCardUserInfo>
-				<HorizonCardUserPic source={userPic}/>
-				<HorizonCardUserName>{userName}</HorizonCardUserName>
-			</HorizonCardUserInfo>
-			{/* 북마크 정보 */}
-			<HorizonCardBookmarkWrap>
-				<HorizonCardButtonParent>
-					<BookmarkIcon source={icons.bookmarkNoLine}/>
-				</HorizonCardButtonParent>
-				<HorizonCardBookmarkCount>{bookmarkCount}</HorizonCardBookmarkCount>
-			</HorizonCardBookmarkWrap>
-		</HorizonCardCont>
-	</HorizonCard>
+const HorizonCard = horizonCardData.map((item) => 
+	<HorizonCardList
+		key={item.id}
+		title={item.title}
+		mainImage={item.mainImage}
+		userPic={item.userPic}
+		userName={item.userName}
+		bookmarkCount={item.bookmarkCount}
+	/>
 );
 
-const RoundCardItem = ({ title, mainImage, tag }: {title: string, mainImage: any, tag: Array<any>}) => (
-	<RoundCard
-	>
-		<RoundCardImage source={mainImage}/>
-		{/* 레시피 제목 */}
-		<RoundCardTitle>{title}</RoundCardTitle>
-		{/* 하단 정보 */}
-		<GrayFlagWrap>
-			<GrayFlag>{tag}</GrayFlag>
-		</GrayFlagWrap>
-	</RoundCard>
+const RoundCard = RoundCardData.map((item) => 
+	<RoundCardList
+		key={item.id}
+		title={item.title}
+		mainImage={item.mainImage}
+		tag={item.tag}
+	/>
 );
 
 function Recipe() {
-	const renderItem = ({ item }: {item: any}) => (
-		<Item 
-			title={item.title}
-			mainImage={item.mainImage}
-			userPic={item.userPic}
-			userName={item.userName}
-			bookmarkCount={item.bookmarkCount}
-		/>
-	);
+	// 전체 높이 - (헤더 + 탭 + 하단바 높이) = 스크롤 뷰 높이
+	const scrollHeight = Dimensions.get('window').height - 64 - 42 - 60
 
-	const renderRoundCardItem = ({ item }: {item: any}) => (
-		<RoundCardItem 
-			title={item.title}
-			mainImage={item.mainImage}
-			tag={item.tag}
-		/>
-	);
 	return (
-			<SafeAreaView style={{ flex:1, paddingBottom: 60 }}>
-				<BoxItem>
-					<FlatList
-						style={{
+		<View 
+			style={{
+				height: scrollHeight
+			}}>
+			<ScrollView 
+				style={{ 
+					backgroundColor: 'white',
+					paddingTop: 24,
+					paddingBottom: 40
+				}}
+			>
+				<View
+					style={{ 
+						paddingBottom: 40
+					}}
+				>
+					<HeadTitle
+						style={{ 
 							paddingLeft: 16
 						}}
-						data={data}
-						keyExtractor={(dataItem) => String(dataItem.id)}
-						horizontal={true}
-						showsHorizontalScrollIndicator={false}
-						renderItem={renderItem}
-					/>
-				</BoxItem>
-				<BoxItem>
-					<RoundCardWrap>
-						<SectionList
-						contentContainerStyle={{
-							paddingHorizontal: 16,
-							paddingBottom: 60
+					>최근 본 레시피</HeadTitle>
+					<ScrollView 
+						style={{ 
+							backgroundColor: 'white',
+							paddingLeft: 16
 						}}
-							sections={data2}
-							keyExtractor={(data2Item) => String(data2Item.id)}
-							renderItem={renderRoundCardItem}
-						/>
+						horizontal
+						showsHorizontalScrollIndicator={false}
+					>
+						{HorizonCard}
+					</ScrollView>
+				</View>
+				<View 
+					style={{
+						backgroundColor: 'white',
+						paddingHorizontal: 16
+					}}>
+					<HeadTitle>북마크한 레시피</HeadTitle>
+					<RoundCardWrap>
+						{RoundCard}
 					</RoundCardWrap>
-				</BoxItem>
-			</SafeAreaView>
+				</View>
+			</ScrollView>
+		</View>
 	)
 }
 

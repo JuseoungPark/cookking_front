@@ -8,7 +8,7 @@ import Chips from '../components/SelectChips'
 import Input from '../components/Input'
 import { Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import Flag from '../components/Flag'
+import LineFlag from '../components/Flag/LineFlag'
 
 function Search() {
 	const navigation = useNavigation()
@@ -45,7 +45,7 @@ function Search() {
 
 			<Text>Flag</Text>
 
-			<Flag />
+			<LineFlag />
 		</Container>
 	)
 }

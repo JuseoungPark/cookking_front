@@ -71,10 +71,10 @@ export const FONTS = {
     fontLight: { fontFamily: 'NotoSansKR-Light', letterSpacing: '-0.05em' },
 
     // 타이틀
-    largestTitle: { fontFamily: 'NotoSansKR-Bold', fontSize: FONTSIZES.largestTitle }, // 22
-    mainTitle: { fontFamily: 'NotoSansKR-Bold', fontSize: FONTSIZES.mainTitle }, // 20
-    midTitle: { fontFamily: 'NotoSansKR-Medium', fontSize: FONTSIZES.mainTitle }, // 17
-    subTitle: { fontFamily: 'NotoSansKR-Medium', fontSize: FONTSIZES.subTitle }, // 15
+    largestTitle: { fontFamily: 'NotoSansKR-Bold', fontSize: FONTSIZES.largestTitle , letterSpacing: '-0.05em'}, // 22
+    mainTitle: { fontFamily: 'NotoSansKR-Bold', fontSize: FONTSIZES.mainTitle, letterSpacing: '-0.05em' }, // 20
+    midTitle: { fontFamily: 'NotoSansKR-Medium', fontSize: FONTSIZES.mainTitle, letterSpacing: '-0.05em' }, // 17
+    subTitle: { fontFamily: 'NotoSansKR-Medium', fontSize: FONTSIZES.subTitle, letterSpacing: '-0.05em' }, // 15
 
     // 서브텍스트 (info text)
     largestSubText: { fontFamily: 'NotoSansKR-Regular', fontSize: FONTSIZES.body1, color: COLORS.gray700 }, // 17
