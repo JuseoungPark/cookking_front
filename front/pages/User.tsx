@@ -15,7 +15,10 @@ import TabBar from '../components/Tabbar'
 import RecipeWritten from './RecipeWritten'
 import RecipeBook from './RecipeBook'
 
-import { Text } from 'react-native'
+import { View, Text } from 'react-native'
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+
+import Input from '../components/Input'
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -25,7 +28,7 @@ function User() {
 	return (
 		<Container>
 			<Box>
-				<BoxItem space>
+				{/* <BoxItem space>
 					<Profile>
 						<Profile_Picture
 							source={require('../assets/temp/temp.png')}
@@ -56,7 +59,60 @@ function User() {
 				<Tab.Navigator swipeEnabled={false} tabBar={(props) => <TabBar {...props} />}>
 					<Tab.Screen name="작성한 레시피" component={RecipeWritten}/>
 					<Tab.Screen name="좋아요한 레시피" component={RecipeBook} />
-				</Tab.Navigator>
+				</Tab.Navigator> */}
+
+				<BoxItem space>
+					<Profile>
+						<TouchableOpacity
+							style={{
+								// 
+							}}
+						>
+							<Profile_Picture
+								source={require('../assets/temp/temp.png')}
+							/>
+							<Text
+								style={{
+									color: '#289a7e',
+								}}
+							>프로필 사진 바꾸기</Text>
+						</TouchableOpacity>
+					</Profile>
+
+					<View
+						style={{
+							// ProfileInputForm
+							flex: 1,
+							flexDirection: 'column',
+							flexWrap: 'wrap',
+						}}
+					>
+						<InputFormItem>
+							<InputFormTitle>이름</InputFormTitle>
+							<Input
+								placeholder='이름을 입력해야 할거야'
+							/>
+						</InputFormItem>
+						<InputFormItem>
+							<InputFormTitle>사용자 이름</InputFormTitle>
+							<Input
+								placeholder='카레..? 휴먼..?'
+							/>
+						</InputFormItem>
+						<InputFormItem>
+							<InputFormTitle>웹사이트</InputFormTitle>
+							<Input
+								placeholder='blog.naver.com/krlee'
+							/>
+						</InputFormItem>
+						<InputFormItem>
+							<InputFormTitle>소개</InputFormTitle>
+							<Input
+								placeholder='주로 카레를 만듭니다.'
+							/>
+						</InputFormItem>
+					</View>
+				</BoxItem>
 			</Box>
 		</Container>
 	)
@@ -89,6 +145,19 @@ const ProfileUserData = styled.Text`
 	${FONTS.fontBold};
 	font-size: ${FONTSIZES.mainTitle};
 	color: ${COLORS.black};
+`
+// 입력폼
+const InputFormItem = styled.View`
+	flex: 1;
+	flex-flow: row wrap;
+	align-items: center;
+	min-height: 40;
+	margin-bottom: 16;
+`
+const InputFormTitle = styled.Text`
+	min-width: 88;
+	${FONTS.fontMedium};
+	font-size: 15;
 `
 
 export default User

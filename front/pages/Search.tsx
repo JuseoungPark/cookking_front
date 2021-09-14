@@ -27,7 +27,10 @@ function Search() {
 	return (
 		<Container>
 			<Text>Search</Text>
-			<Input/>
+			<Input
+				placeholder='입력해줘'
+				searchIcon
+			/>
 			<ButtonWrap>
 				<Button
 					onPress={() => navigation.navigate('Count', { title: '서치에서 눌렀다 임마!' })}

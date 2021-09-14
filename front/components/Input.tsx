@@ -3,7 +3,15 @@ import styled, { css } from 'styled-components/native';
 import { Text } from 'react-native';
 import appTheme, { COLORS, FONTSIZES, FONTS } from '../constants/theme';
 
-const Input = () => {
+export type Props = {
+  placeholder?: string;
+  searchIcon?: boolean;
+};
+
+const Input: React.FC<Props> = ({
+  placeholder,
+  searchIcon
+}) => {
 
   const [text, setText] = useState('')
   // const [isFocus, setIsFocus] = useState(false)
@@ -29,12 +37,12 @@ const Input = () => {
         onChangeText={(value) => setText(value)}
         // onFocus={ focusHandler }
         // onBlur={ blurHandler }
-        placeholder='검색어를 입력해 주세요.'
+        placeholder={placeholder}
         placeholderTextColor='${COLORS.gray400}'
       />
 
       {/* 삭제 버튼 */}
-      {<Text>{text}</Text> && (
+      {text.length > 0 && (
         <ButtonParent onPress={() => setText('')}>
           <CloseButton
             source={require('../assets/ico_clear_mid.png')}
@@ -43,11 +51,13 @@ const Input = () => {
       )}
 
       {/* 검색 버튼 */}
-      <ButtonParent>
-        <SearchButton
-          source={require('../assets/ico_search.png')}
-        />
-      </ButtonParent>
+      {searchIcon && (
+        <ButtonParent>
+          <SearchButton
+            source={require('../assets/ico_search.png')}
+          />
+        </ButtonParent>
+      )}
     </InputWrap>
   );
 };
@@ -61,6 +71,7 @@ interface InputProps {
 };
 
 const InputWrap = styled.View`
+  flex: 1;
   position: relative;
   flex-direction: row;
   justify-content: flex-end;
