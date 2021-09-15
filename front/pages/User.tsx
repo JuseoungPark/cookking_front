@@ -19,11 +19,17 @@ import { View, Text } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 import Input from '../components/Input'
+import SwitchToggle from '../components/SwitchToggle'
 
 const Tab = createMaterialTopTabNavigator();
 
 function User() {
 	const navigation = useNavigation()
+
+	// SwitchToggle
+	// const handleToggle = (name, value) => {
+	// 	setToggle({ ...toggle, [name]: !value });
+	// };
 
 	return (
 		<Container>
@@ -112,6 +118,14 @@ function User() {
 							/>
 						</InputFormItem>
 					</View>
+				</BoxItem>
+
+				<BoxItem space>
+					<SwitchToggle
+						// isOn={}
+						onToggle={()=> { console.log('왜 안되냐..')}
+						}
+					/>
 				</BoxItem>
 			</Box>
 		</Container>
