@@ -6,19 +6,19 @@ import Animated, { Easing } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import { COLORS } from '@/constants';
 
-export type Props = {
-  isOn: object;
-  onToggle: object;
+type ToggleProps = {
+  isOn: null;
+  onToggle: null;
   onColor?: string;
   offColor?: string;
 };
 
-const Toogle: React.FC<Props> = ({
+const SwitchToggle = ({
   isOn,
-  onColor = '#246DFB',
-  offColor = '#E8E8E9',
+  onColor,
+  offColor,
   onToggle,
-}) => {
+}: ToggleProps) => {
 
   const [aniValue, setAniValue] = useState(new Animated.Value(0));
   const color = isOn ? onColor : offColor;
@@ -53,6 +53,11 @@ const Toogle: React.FC<Props> = ({
   )
 }
 
+SwitchToggle.defaultProps = {
+  onColor: '#246DFB',
+  offColor: '#E8E8E9',
+};
+
 const ToggleWrap = styled.View`
   flex-flow: row nowrap;
   align-items: center;
@@ -83,4 +88,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Toogle;
+export default SwitchToggle;
