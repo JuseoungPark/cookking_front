@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import AppNavigator from './navigator/AppNavigator'
+// import AppNavigator from './navigator/AppNavigator'
+import AuthNavigator from './pages/Auth/AuthNavigator'
 import { RecoilRoot } from 'recoil'
 // 나중에 전역으로 적용할 수 있는 방법을 찾은 뒤 위치를 이동시켜야함. 일단 테스트용으로 폰트를 App.tsx에 추가함.
 import { useFonts } from 'expo-font';
@@ -20,7 +21,8 @@ export default function App() {
 	return (
 		<RecoilRoot>
 			<NavigationContainer>
-				<AppNavigator />
+				<AuthNavigator />
+				{/* <AppNavigator /> */}
 			</NavigationContainer>
 		</RecoilRoot>
 	)

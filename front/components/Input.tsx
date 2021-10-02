@@ -1,42 +1,21 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components/native';
-import { Text } from 'react-native';
-import appTheme, { COLORS, FONTSIZES, FONTS } from '../constants/theme';
+import { COLORS } from '../constants/theme';
 
-export type Props = {
+type InputProps = {
   placeholder?: string;
   searchIcon?: boolean;
 };
 
-const Input: React.FC<Props> = ({
-  placeholder,
-  searchIcon
-}) => {
+const Input = ({ placeholder, searchIcon }: InputProps, { ...props }) => {
 
   const [text, setText] = useState('')
-  // const [isFocus, setIsFocus] = useState(false)
-  // const [isBlur, setIsBlur] = useState(false)
-
-  // const focusHandler = (event: FocusEvent<StyledInput>) => {
-  //   setIsFocus(true);
-
-  //   console.log(event);
-  // }
-  // const blurHandler = (event: FocusEvent<StyledInput>) => {
-  //   setIsFocus(false);
-  //   setIsBlur(true);
-
-
-  //   console.log(event);
-  // }
 
   return (
     <InputWrap>
       <StyledInput
         value={text}
         onChangeText={(value) => setText(value)}
-        // onFocus={ focusHandler }
-        // onBlur={ blurHandler }
         placeholder={placeholder}
         placeholderTextColor='${COLORS.gray400}'
       />
@@ -65,24 +44,28 @@ const Input: React.FC<Props> = ({
 // TextInput Opt
 // ref / onSubmitEditing / returnKeyType / autoFocus /
 
-interface InputProps {
-  // style
-  gray?: boolean;
-};
-
 const InputWrap = styled.View`
-  flex: 1;
-  position: relative;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 40px;
 `;
-const StyledInput = styled.TextInput<InputProps>`
+
+const StyledInput = styled.TextInput`
   position: absolute;
-  width: 100%; height: 40px;
+  width: inherit; min-height: inherit;
   padding: 0 88px 0 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${COLORS.gray200};
   background-color: ${COLORS.white};
-  border: 1px solid ${COLORS.gray200};
+  ${props => props.login && css`
+    width: 300px;
+    border-width: 0 0 2px 0;
+    border-color: #81d8Ba;
+  `}
 `;
 const ButtonParent = styled.TouchableOpacity`
   flex: none;
