@@ -5,9 +5,12 @@ import { COLORS } from '../constants/theme';
 type InputProps = {
   placeholder?: string;
   searchIcon?: boolean;
+
+  // 스타일
+  login?: boolean;
 };
 
-const Input = ({ placeholder, searchIcon }: InputProps, { ...props }) => {
+const Input = ({ placeholder, searchIcon, login }: InputProps) => {
 
   const [text, setText] = useState('')
 
@@ -53,7 +56,7 @@ const InputWrap = styled.View`
   min-height: 40px;
 `;
 
-const StyledInput = styled.TextInput`
+const StyledInput = styled.TextInput<InputProps>`
   position: absolute;
   width: inherit; min-height: inherit;
   padding: 0 88px 0 0;

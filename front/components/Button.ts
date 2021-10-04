@@ -22,6 +22,8 @@ type ButtonPropsType = {
 
     // size : 기본 32 (medium)
     heightSize?: keyof typeof ButtonSize
+
+    login?: boolean;
 }
 
 interface ButtonContPropsType {
@@ -51,6 +53,11 @@ const Button = styled.TouchableOpacity<ButtonPropsType>`
     border-radius: 0;
   `}
   ${props => props.round && css`border-radius: 50px`};
+
+  ${props => props.login && css`
+    width: 300px;
+    height: 56px;
+  `}
 `
 
 export const ButtonText = styled.Text<ButtonContPropsType>`

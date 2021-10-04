@@ -14,4 +14,9 @@ const Container = styled.View<StyledFlag>`
 	`}
 `
 
-export default Container
+export const InnerContainer = styled(Container)`
+	justify-content: center;
+	padding: 0 30px;
+`
+
+export default Container;
