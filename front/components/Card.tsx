@@ -24,7 +24,7 @@ const DATA = [
   },
 ]
 
-const renderItem = ({ item }) => {
+const renderItem = ({ item }: {item: any}) => {
   return (
     <CardWrap>
       <CardHeader>
